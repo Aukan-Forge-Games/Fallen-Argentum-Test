@@ -36,5 +36,6 @@ func _physics_process(dt: float) -> void:
 func set_username(new_username: String):
 	username = new_username
 
-func _on_input_synchronizer_action_1() -> void:
+## Placeholder action. Player does a 'pop' animation.
+func pop() -> void:
 	create_tween().tween_property(sprite_2d, "scale", Vector2.ONE, 0.2).from(Vector2(1.5, 1.5)).set_trans(Tween.TRANS_BACK)

@@ -51,4 +51,4 @@ offset_bottom = -64.0
 text = "Player"
 horizontal_alignment = 1
 
-[connection signal="action1" from="InputSynchronizer" to="." method="_on_input_synchronizer_action_1"]
+[connection signal="attacked" from="InputSynchronizer" to="." method="pop"]
