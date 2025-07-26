@@ -17,15 +17,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Lobby="*res://Autoloads/lobby.gd"
-SceneTransition="*res://Autoloads/scene_transition.tscn"
+Lobby="*res://autoloads/lobby.gd"
+SceneTransition="*res://autoloads/scene_transition.tscn"
 
 [file_customization]
 
 folder_colors={
-"res://Autoloads/": "red",
-"res://Scenes/": "green",
-"res://Scripts/": "purple"
+"res://autoloads/": "red",
+"res://scenes/": "green"
 }
 
 [input]
