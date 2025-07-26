@@ -41,3 +41,5 @@ script = ExtResource("3_xpcdj")
 [node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 0.1
 replication_config = SubResource("SceneReplicationConfig_xpcdj")
+
+[connection signal="action1" from="InputSynchronizer" to="." method="_on_input_synchronizer_action_1"]

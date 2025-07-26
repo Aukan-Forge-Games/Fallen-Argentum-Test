@@ -1,38 +1,30 @@
 extends Node
-@onready var player_spawner: MultiplayerSpawner = $PlayerSpawner
+
 @onready var players: Node2D = $Players
 
 const PLAYER_SCN = preload("res://Scenes/Player/player.tscn")
 
 func _ready():
+	# Spawning and deleting players
+	Lobby.player_connected.connect(_spawn_player)
+	Lobby.player_disconnected.connect(_free_player)
 	
 	if not multiplayer.is_server():
 		# Spawn myself, a peer.
 		_spawn_player(multiplayer.get_unique_id())
-		for id in multiplayer.get_peers():
-			_spawn_player(id)
 		return
 	
 	# Spawn myself (the server). No players can be connected yet.
 	_spawn_player(1)
-	
-	Lobby.player_loaded.rpc_id(1)
-	player_spawner.spawn_path = get_path_to(players)
-	
-	# Spawning and deleting players
-	multiplayer.peer_connected.connect(_spawn_player)
-	multiplayer.peer_disconnected.connect(_free_player)
-	
-	
 
 func _exit_tree():
-	Lobby.leave_game()
-	if not multiplayer.is_server():
+	if multiplayer.multiplayer_peer != null and not multiplayer.is_server():
 		return
 	multiplayer.peer_connected.disconnect(_spawn_player)
 	multiplayer.peer_disconnected.disconnect(_free_player)
 
-func _spawn_player(id: int):
+func _spawn_player(id: int, info: Variant = null):
+	print("Spawning player with ID %s" % id)
 	var player = PLAYER_SCN.instantiate()
 	player.name = str(id)
 	

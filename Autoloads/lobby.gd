@@ -19,10 +19,6 @@ var players = {}
 # entered in a UI scene.
 var player_info = {"name": "Name"}
 
-var players_loaded = 0
-
-
-
 func _ready():
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
@@ -54,31 +50,13 @@ func create_game():
 	
 	SceneTransition.set_message("Starting Game...")
 	SceneTransition.change_scene_to(load("res://World/game_world.tscn"))
+	
+	return OK
 
-
-func leave_game():
-	multiplayer.multiplayer_peer.disconnect_peer(multiplayer.get_unique_id())
 
 func remove_multiplayer_peer():
 	multiplayer.multiplayer_peer = null
 	players.clear()
-
-
-# When the server decides to start the game from a UI scene,
-# do Lobby.load_game.rpc(filepath)
-@rpc("call_local", "reliable")
-func load_game(game_scene_path):
-	get_tree().change_scene_to_file(game_scene_path)
-
-
-# Every peer will call this when they have loaded the game scene.
-@rpc("any_peer", "call_local", "reliable")
-func player_loaded():
-	if multiplayer.is_server():
-		players_loaded += 1
-		if players_loaded == players.size():
-			print("STart game") # TODO!!!
-			players_loaded = 0
 
 
 # When a peer connects, send them my player info.
@@ -95,11 +73,9 @@ func _register_player(new_player_info):
 	
 	print("Player registered with id %s" % new_player_id)
 
-
 func _on_player_disconnected(id):
 	players.erase(id)
 	player_disconnected.emit(id)
-
 
 func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
@@ -109,12 +85,17 @@ func _on_connected_ok():
 	# After a successful connection, load into the game world.
 	SceneTransition.finish_change_scene(load("res://World/game_world.tscn"))
 
-
 func _on_connected_fail():
 	multiplayer.multiplayer_peer = null
-
+	SceneTransition.cancel_change_scene()
 
 func _on_server_disconnected():
 	multiplayer.multiplayer_peer = null
 	players.clear()
 	server_disconnected.emit()
+	
+	# Instantly change scene to the main menu.
+	SceneTransition.finish_change_scene(load("res://Scenes/UI/join_screen.tscn"))
+
+func get_player_ids() -> Array:
+	return players.keys()

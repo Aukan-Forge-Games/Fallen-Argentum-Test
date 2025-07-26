@@ -27,8 +27,11 @@ func finish_change_scene(scn: PackedScene):
 	get_tree().change_scene_to_packed(scn)
 	_fade_out()
 
+func cancel_change_scene():
+	_fade_out()
+
 func set_message(msg: String):
-	message_label.text = msg
+	message_label.text = "[center]" + msg
 
 func _fade_in():
 	if fade_tween:
