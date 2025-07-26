@@ -9,7 +9,9 @@ var move : Vector2 = Vector2.ZERO
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var camera_2d: Camera2D = $Camera2D
 
-var username : String = ""
+var username : String = "":
+	set = set_username
+
 @onready var name_label: Label = $NameLabel
 
 func _ready():

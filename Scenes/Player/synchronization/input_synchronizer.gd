@@ -15,11 +15,11 @@ func _physics_process(_dt: float) -> void:
 		action.rpc_id(1, [get_multiplayer_authority()])
 
 ## Placeholder action function. Causes player to 'pop'.
-@rpc("call_local", "authority", "reliable")
+@rpc("authority", "call_local", "reliable")
 func attack():
 	attacked.emit()
 
-@rpc("call_remote", "authority", "reliable")
+@rpc("authority", "call_remote", "reliable")
 func action(data: Array):
 	var player_id : int = data[0]
 	print("Player %s performed action!" % player_id)
