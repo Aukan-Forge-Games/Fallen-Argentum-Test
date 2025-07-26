@@ -8,9 +8,6 @@ var move : Vector2 = Vector2.ZERO
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-#func _enter_tree() -> void:
-	#set_physics_process(multiplayer.is_server())
-
 func _physics_process(dt: float) -> void:
 	move = input_synchronizer.move_input
 	

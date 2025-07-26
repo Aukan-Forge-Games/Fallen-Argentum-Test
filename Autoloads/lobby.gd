@@ -26,7 +26,6 @@ func _ready():
 	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
-
 func join_game(address = ""):
 	if address.is_empty():
 		address = DEFAULT_SERVER_IP
@@ -36,7 +35,6 @@ func join_game(address = ""):
 		return error
 	multiplayer.multiplayer_peer = peer
 	return OK
-
 
 func create_game():
 	var peer = ENetMultiplayerPeer.new()
@@ -53,17 +51,14 @@ func create_game():
 	
 	return OK
 
-
 func remove_multiplayer_peer():
 	multiplayer.multiplayer_peer = null
 	players.clear()
-
 
 # When a peer connects, send them my player info.
 # This allows transfer of all desired data for each player, not only the unique ID.
 func _on_player_connected(id):
 	_register_player.rpc_id(id, player_info)
-
 
 @rpc("any_peer", "reliable")
 func _register_player(new_player_info):

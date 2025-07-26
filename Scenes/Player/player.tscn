@@ -38,7 +38,7 @@ delta_interval = 0.1
 replication_config = SubResource("SceneReplicationConfig_a3d8c")
 script = ExtResource("3_xpcdj")
 
-[node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="PositionSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 0.1
 replication_config = SubResource("SceneReplicationConfig_xpcdj")
 
