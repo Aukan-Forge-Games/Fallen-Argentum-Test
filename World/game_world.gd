@@ -10,11 +10,11 @@ func _ready():
 	Lobby.player_disconnected.connect(_free_player)
 	
 	if not multiplayer.is_server():
-		# Spawn myself, a peer.
+		# Spawn myself, a peer
 		_spawn_player(multiplayer.get_unique_id())
 		return
 	
-	# Spawn myself (the server). No players can be connected yet.
+	# Spawn myself (the server)
 	_spawn_player(1)
 
 func _exit_tree():
@@ -35,7 +35,7 @@ func _spawn_player(id: int, info: Variant = null):
 	if info != null:
 		player.set_username(info["name"])
 	else:
-		# This is the local player -- don't show username.
+		# This is the local player -- don't show a username.
 		player.set_username("")
 	
 

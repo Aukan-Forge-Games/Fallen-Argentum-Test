@@ -7,6 +7,8 @@ var server_ip: String = ""
 
 func _ready():
 	Lobby.multiplayer.connection_failed.connect(_on_join_failed)
+	# Set screen name to default
+	_on_screen_name_text_edit_text_changed()
 
 func _on_join_server_button_pressed() -> void:
 	SceneTransition.fade_to_black_with_message("Joining game...")
@@ -16,7 +18,6 @@ func _on_join_server_button_pressed() -> void:
 	if err != OK:
 		printerr("Error joining game at ip %s. %s" % [server_ip, err])
 		return
-	
 
 func _on_join_failed():
 	SceneTransition.show_message("Failed to join server!")
@@ -25,7 +26,6 @@ func _on_join_failed():
 
 func _on_ip_text_edit_text_changed() -> void:
 	server_ip = ip_text_edit.text
-
 
 func _on_host_server_button_pressed() -> void:
 	Lobby.create_game()
