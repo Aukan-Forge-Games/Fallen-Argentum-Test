@@ -13,20 +13,23 @@ func _ready():
 	message_label.text = ""
 	black_rectangle.hide()
 
+## Fade in, change scene, and fade back out
 func change_scene_to(scn: PackedScene):
 	_fade_in()
 	await fade_in_finished
 	finish_change_scene(scn)
 
-## Fade to black and await "finish_change_scene" to fade back in.
+## Fade to black and await "finish_change_scene" to fade back in
 func fade_to_black_with_message(msg: String):
 	set_message(msg)
 	_fade_in()
 
+## Change scene and fade out
 func finish_change_scene(scn: PackedScene):
 	get_tree().change_scene_to_packed(scn)
 	_fade_out()
 
+## Fade out without changing scene
 func cancel_change_scene():
 	_fade_out()
 
