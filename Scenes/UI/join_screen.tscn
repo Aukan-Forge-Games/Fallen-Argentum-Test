@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://car8wmjjdjowu"]
+
+[ext_resource type="Script" uid="uid://dnwvo0mke5rlx" path="res://Scenes/UI/join_screen.gd" id="1_fed4i"]
+
+[node name="JoinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fed4i")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(220.65, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+text = "IP:"
+fit_content = true
+scroll_active = false
+
+[node name="IPTextEdit" type="TextEdit" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "localhost"
+placeholder_text = "IP Address"
+scroll_fit_content_height = true
+
+[node name="JoinServerButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join Server"
+
+[node name="HostServerButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host Server"
+
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/HBoxContainer/IPTextEdit" to="." method="_on_ip_text_edit_text_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinServerButton" to="." method="_on_join_server_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HostServerButton" to="." method="_on_host_server_button_pressed"]
