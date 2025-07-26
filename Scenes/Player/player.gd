@@ -8,6 +8,8 @@ var move : Vector2 = Vector2.ZERO
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+@onready var name_label: Label = $NameLabel
+
 func _physics_process(dt: float) -> void:
 	move = input_synchronizer.move_input
 	
@@ -24,6 +26,8 @@ func _physics_process(dt: float) -> void:
 	
 	move_and_slide()
 
+func set_username(username: String):
+	name_label.text = username
 
 func _on_input_synchronizer_action_1() -> void:
 	create_tween().tween_property(sprite_2d, "scale", Vector2.ONE, 0.2).from(Vector2(1.5, 1.5)).set_trans(Tween.TRANS_BACK)

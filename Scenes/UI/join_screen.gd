@@ -1,6 +1,7 @@
 extends Control
 
 @onready var ip_text_edit: TextEdit = $CenterContainer/VBoxContainer/HBoxContainer/IPTextEdit
+@onready var screen_name_text_edit: TextEdit = $CenterContainer/VBoxContainer/HBoxContainer2/ScreenNameTextEdit
 
 var server_ip: String = ""
 
@@ -28,3 +29,6 @@ func _on_ip_text_edit_text_changed() -> void:
 
 func _on_host_server_button_pressed() -> void:
 	Lobby.create_game()
+
+func _on_screen_name_text_edit_text_changed() -> void:
+	Lobby.set_screen_name(screen_name_text_edit.text)

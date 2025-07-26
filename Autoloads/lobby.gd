@@ -94,3 +94,6 @@ func _on_server_disconnected():
 
 func get_player_ids() -> Array:
 	return players.keys()
+
+func set_screen_name(username: String):
+	player_info["name"] = username

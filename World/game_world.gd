@@ -31,6 +31,13 @@ func _spawn_player(id: int, info: Variant = null):
 	player.set_multiplayer_authority(id, true)
 	players.add_child(player, true)
 	
+	# Set up player info (username)
+	if info != null:
+		player.set_username(info["name"])
+	else:
+		# This is the local player -- don't show username.
+		player.set_username("")
+	
 
 func _free_player(id: int):
 	if not players.has_node(str(id)):
