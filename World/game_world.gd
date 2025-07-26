@@ -12,10 +12,6 @@ func _ready():
 	Lobby.player_connected.connect(_on_player_connected)
 	Lobby.player_disconnected.connect(_on_player_disconnected)
 
-func _exit_tree():
-	if multiplayer.multiplayer_peer != null and not multiplayer.is_server():
-		return
-
 func _on_player_connected(id: int, info: Variant = null):
 	player_spawner.spawn([id, info])
 
