@@ -31,6 +31,7 @@ shape = SubResource("RectangleShape2D_a3d8c")
 texture = ExtResource("1_uvnfx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 
 [node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_interval = 0.1

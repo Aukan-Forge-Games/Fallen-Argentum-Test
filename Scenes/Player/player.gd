@@ -10,6 +10,14 @@ var move : Vector2 = Vector2.ZERO
 
 @onready var name_label: Label = $NameLabel
 
+var username : String = ""
+@onready var camera_2d: Camera2D = $Camera2D
+
+func _ready():
+	name_label.text = username
+	if get_multiplayer_authority() == multiplayer.get_unique_id():
+		camera_2d.enabled = true
+
 func _physics_process(dt: float) -> void:
 	move = input_synchronizer.move_input
 	
@@ -26,8 +34,8 @@ func _physics_process(dt: float) -> void:
 	
 	move_and_slide()
 
-func set_username(username: String):
-	name_label.text = username
+func set_username(new_username: String):
+	username = new_username
 
 func _on_input_synchronizer_action_1() -> void:
 	create_tween().tween_property(sprite_2d, "scale", Vector2.ONE, 0.2).from(Vector2(1.5, 1.5)).set_trans(Tween.TRANS_BACK)
