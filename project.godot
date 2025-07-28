@@ -23,6 +23,7 @@ SceneTransition="*res://autoloads/scene_transition.tscn"
 [file_customization]
 
 folder_colors={
+"res://assets/": "yellow",
 "res://autoloads/": "red",
 "res://scenes/": "green"
 }
