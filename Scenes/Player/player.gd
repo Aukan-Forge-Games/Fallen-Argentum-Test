@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Player
+
 @export var ACCEL := 50.0
 @export var MAX_SPD := 500.0
 @export var FRICTION := 0.5
