@@ -20,3 +20,6 @@ func move_to_square(pos: Vector2i):
 ## Returns the number of moves needed to reach a given point
 func get_path_distance_to(pos: Vector2i) -> int:
 	return false
+
+func get_board_pos() -> Vector2i:
+	return board_pos
