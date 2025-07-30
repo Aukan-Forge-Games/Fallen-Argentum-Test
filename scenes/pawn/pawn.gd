@@ -3,7 +3,7 @@ extends Node2D
 ## Contains functions for moving between squares on the board.
 class_name Pawn
 
-var board_pos : Vector2i
+var board_pos : Vector2i = Vector2i.ZERO
 
 # Use these to control animations
 signal move_started()

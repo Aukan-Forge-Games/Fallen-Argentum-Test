@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://nfnr83hxlobt"]
+[gd_scene load_steps=13 format=4 uid="uid://nfnr83hxlobt"]
 
 [ext_resource type="Texture2D" uid="uid://cvpg3ns237ye8" path="res://assets/tiles/world_tiles.png" id="1_31jov"]
 [ext_resource type="Script" uid="uid://b8imj78nyvgrf" path="res://components/game_loop/turn_manager.gd" id="1_nx7k0"]
 [ext_resource type="Texture2D" uid="uid://05vy60pfnpvk" path="res://assets/characters/player/player.png" id="2_28mpj"]
 [ext_resource type="Script" uid="uid://cyyplxevewoey" path="res://components/actions/move_action.gd" id="2_sp01v"]
 [ext_resource type="Script" uid="uid://c8jm3c2thgttg" path="res://world/level_tile_map_layer.gd" id="2_upu1s"]
+[ext_resource type="Script" uid="uid://d2ijj7p568cep" path="res://scenes/pawn/pawn.gd" id="5_sp01v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upu1s"]
 texture = ExtResource("1_31jov")
@@ -208,8 +209,10 @@ _data = {
 
 [node name="GameWorld" type="Node2D"]
 
-[node name="TurnManager" type="Node" parent="."]
+[node name="TurnManager" type="Node" parent="." node_paths=PackedStringArray("game_board", "local_player_pawn")]
 script = ExtResource("1_nx7k0")
+game_board = NodePath("../LevelTileMapLayer")
+local_player_pawn = NodePath("../PlayerPawn")
 
 [node name="PlayerActions" type="Node" parent="TurnManager"]
 
@@ -224,6 +227,7 @@ script = ExtResource("2_upu1s")
 
 [node name="PlayerPawn" type="Node2D" parent="."]
 position = Vector2(304, 432)
+script = ExtResource("5_sp01v")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerPawn"]
 texture = ExtResource("2_28mpj")

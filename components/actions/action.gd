@@ -20,6 +20,9 @@ enum ActionTypes {
 
 var action_type : ActionTypes = ActionTypes.MAJOR
 
+func on_selected():
+	start_preview() ## Default behavior, can be overridden.
+
 func _ready():
 	pass
 
@@ -33,6 +36,10 @@ func _process(_dt):
 			_execute(_dt)
 
 #region preview_state
+func start_preview():
+	state = States.PREVIEW
+	pass
+
 func _preview(dt):
 	pass
 
