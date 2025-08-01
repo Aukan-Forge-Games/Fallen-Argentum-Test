@@ -17,7 +17,6 @@ signal minor_actions_changed(to: int)
 var active_action : Action = null ## Used to track the action the player currently has selected.
 
 @export var game_board : GameBoard
-@export var local_player_pawn: Pawn # TODO: instantiate players as they join
 
 func _ready():
 	#TODO: load actions from a player character / profile
@@ -27,9 +26,8 @@ func _ready():
 		if action is Action:
 			actions.append(action)
 			action.game_board = game_board
-			# TODO: the following is temporary
-			action.my_pawn = local_player_pawn
-			local_player_pawn.board_pos = game_board.local_to_map(local_player_pawn.position)
+			action.action_used.connect(_on_action_used.bind(action))
+
 
 func start_turn():
 	reset_actions_remaining()
@@ -52,4 +50,19 @@ func _physics_process(delta: float) -> void:
 
 func select_action(action: Action):
 	action.on_selected()
-	
+
+func _on_action_used(action: Action):
+	# Remove action count of correct type
+	match action.action_type:
+		Action.ActionTypes.MAJOR:
+			set_major_actions_remaining(major_actions_remaining - 1)
+		Action.ActionTypes.MINOR:
+			set_minor_actions_remaining(minor_actions_remaining - 1)
+
+
+func _on_player_pawn_spawner_player_pawn_spawned(pawn: Pawn) -> void:
+	# If this is my pawn, bind it to my action nodes.
+	if pawn.get_multiplayer_authority() == multiplayer.get_unique_id():
+		print("Binding my pawn...")
+		for action in actions:
+			action.my_pawn = pawn

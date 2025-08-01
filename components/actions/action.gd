@@ -20,6 +20,8 @@ enum ActionTypes {
 
 var action_type : ActionTypes = ActionTypes.MAJOR
 
+signal action_used()
+
 func on_selected():
 	start_preview() ## Default behavior, can be overridden.
 
@@ -34,6 +36,14 @@ func _process(_dt):
 			_preview(_dt)
 		States.EXECUTE:
 			_execute(_dt)
+
+## Usually, this will activate this action.
+func _on_board_pos_selected(pos: Vector2i):
+	pass
+
+## User has decided not to use this action
+func cancel_action():
+	state = States.IDLE
 
 #region preview_state
 func start_preview():
@@ -55,6 +65,7 @@ func _execute(dt):
 	pass
 
 func _enter_execute():
+	state = States.EXECUTE
 	pass
 
 func _exit_execute():

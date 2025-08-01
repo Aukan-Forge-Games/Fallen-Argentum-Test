@@ -44,7 +44,7 @@ func _check_players_ready():
 	_set_players_ready(ready)
 	
 	# If everyone is ready, start the game
-	if not false in ready.values():
+	if not false in ready.values() and len(ready.values()) > 0:
 		start_game.rpc()
 
 func _set_players_ready(ready: Dictionary[int, bool]):
@@ -59,4 +59,6 @@ func _set_players_ready(ready: Dictionary[int, bool]):
 
 @rpc("authority", "call_local", "reliable")
 func start_game():
+	# Bring everyone into the grid level.
+	SceneTransition.change_scene_to(load("res://world/game_world.tscn"))
 	print("Lego")

@@ -47,7 +47,7 @@ func create_game():
 	player_connected.emit(1, player_info)
 	
 	SceneTransition.set_message("Starting Game...")
-	SceneTransition.change_scene_to(load("res://World/game_world.tscn"))
+	SceneTransition.change_scene_to(load("res://World/lobby_world.tscn"))
 	
 	return OK
 
@@ -78,7 +78,7 @@ func _on_connected_ok():
 	player_connected.emit(peer_id, player_info)
 	
 	# After a successful connection, load into the game world.
-	SceneTransition.finish_change_scene(load("res://World/game_world.tscn"))
+	SceneTransition.finish_change_scene(load("res://World/lobby_world.tscn"))
 
 func _on_connected_fail():
 	multiplayer.multiplayer_peer = null
