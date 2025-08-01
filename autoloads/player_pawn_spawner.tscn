@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjfufj6b8prl3"]
+
+[ext_resource type="Script" uid="uid://j7ri5pcv3clp" path="res://autoloads/player_pawn_spawner.gd" id="1_ekd57"]
+
+[node name="PlayerPawnSpawner" type="MultiplayerSpawner"]
+spawn_path = NodePath("PlayerPawns")
+script = ExtResource("1_ekd57")
+
+[node name="PlayerPawns" type="Node2D" parent="."]
+z_index = 100

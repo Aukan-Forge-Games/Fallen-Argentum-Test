@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var ip_text_edit: TextEdit = $CenterContainer/VBoxContainer/HBoxContainer/IPTextEdit
 @onready var screen_name_text_edit: TextEdit = $CenterContainer/VBoxContainer/HBoxContainer2/ScreenNameTextEdit

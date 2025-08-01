@@ -12,10 +12,11 @@ var state : States = States.IDLE
 @export var game_board : GameBoard
 var my_pawn : Pawn ## The player or enemy pawn that can perform this action
 
+var string_name : String = "ActionName"
+
 enum ActionTypes {
 	MAJOR,
-	MINOR,
-	MOVE
+	MINOR
 }
 
 var action_type : ActionTypes = ActionTypes.MAJOR

@@ -60,5 +60,4 @@ func _set_players_ready(ready: Dictionary[int, bool]):
 @rpc("authority", "call_local", "reliable")
 func start_game():
 	# Bring everyone into the grid level.
-	SceneTransition.change_scene_to(load("res://world/game_world.tscn"))
-	print("Lego")
+	SceneTransition.change_scene_to(GameWorldManager.Worlds.GAME)

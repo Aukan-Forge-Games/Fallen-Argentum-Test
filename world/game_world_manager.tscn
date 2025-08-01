@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmb5n8a0ap7g1"]
+
+[ext_resource type="Script" uid="uid://ckdq6yuus40b6" path="res://world/game_world_manager.gd" id="1_bxrif"]
+[ext_resource type="Script" uid="uid://cgqpxw71inype" path="res://world/world_spawner.gd" id="2_gq0t7"]
+
+[node name="GameWorldManager" type="Node2D"]
+script = ExtResource("1_bxrif")
+
+[node name="WorldSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://car8wmjjdjowu", "uid://ddetsk7et7kab", "uid://nfnr83hxlobt")
+spawn_path = NodePath("../World")
+script = ExtResource("2_gq0t7")
+
+[node name="World" type="Node2D" parent="."]

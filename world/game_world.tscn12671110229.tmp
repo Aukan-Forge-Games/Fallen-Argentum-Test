@@ -26,9 +26,10 @@ sources/0 = SubResource("TileSetAtlasSource_upu1s")
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_ohoed")
 
-[node name="TurnManager" type="Node" parent="." node_paths=PackedStringArray("game_board")]
+[node name="TurnManager" type="Node" parent="." node_paths=PackedStringArray("game_board", "player_pawns")]
 script = ExtResource("1_nx7k0")
 game_board = NodePath("../GameBoard")
+player_pawns = NodePath("")
 
 [node name="ActionInterfaceCanvasLayer" type="CanvasLayer" parent="TurnManager"]
 script = ExtResource("4_ohoed")

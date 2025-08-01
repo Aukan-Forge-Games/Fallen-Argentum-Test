@@ -7,7 +7,8 @@ var move_preview: MoveActionPreview
 var mouse_grid_pos: Vector2i = Vector2i.ZERO
 
 func _ready():
-	action_type = ActionTypes.MOVE
+	string_name = "Move"
+	action_type = ActionTypes.MINOR
 	super._ready()
 
 

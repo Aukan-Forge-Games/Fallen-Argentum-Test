@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpukewd2fapwh"]
+[gd_scene load_steps=9 format=3 uid="uid://bpukewd2fapwh"]
 
 [ext_resource type="Script" uid="uid://d2ijj7p568cep" path="res://scenes/pawn/pawn.gd" id="1_mkxc7"]
 [ext_resource type="Texture2D" uid="uid://05vy60pfnpvk" path="res://assets/characters/player/player.png" id="2_rt0vf"]
+[ext_resource type="Script" uid="uid://cyyplxevewoey" path="res://components/actions/move_action.gd" id="3_rt0vf"]
 
 [sub_resource type="Animation" id="Animation_28mpj"]
 length = 0.001
@@ -207,3 +208,9 @@ speed_scale = 2.0
 
 [node name="BoardPosSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_sp01v")
+
+[node name="Actions" type="Node" parent="."]
+
+[node name="MoveAction" type="Node" parent="Actions"]
+script = ExtResource("3_rt0vf")
+metadata/_custom_type_script = "uid://cyyplxevewoey"

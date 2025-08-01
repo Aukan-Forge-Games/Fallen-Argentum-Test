@@ -8,16 +8,18 @@ signal fade_out_finished()
 
 var fade_tween : Tween
 
+var world_manager : GameWorldManager
+
 func _ready():
 	black_rectangle.modulate = Color(1,1,1,0)
 	message_label.text = ""
 	black_rectangle.hide()
 
 ## Fade in, change scene, and fade back out
-func change_scene_to(scn: PackedScene):
+func change_scene_to(scn_id : int):
 	_fade_in()
 	await fade_in_finished
-	finish_change_scene(scn)
+	finish_change_scene(scn_id)
 
 ## Fade to black and await "finish_change_scene" to fade back in
 func fade_to_black_with_message(msg: String):
@@ -25,8 +27,8 @@ func fade_to_black_with_message(msg: String):
 	_fade_in()
 
 ## Change scene and fade out
-func finish_change_scene(scn: PackedScene):
-	get_tree().change_scene_to_packed(scn)
+func finish_change_scene(scn_id : int):
+	world_manager.change_scene(scn_id)
 	_fade_out()
 
 ## Fade out without changing scene

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnax2xupfbxqx"]
+
+[ext_resource type="Script" uid="uid://do830klyj0gbv" path="res://autoloads/player_spawner.gd" id="1_2uatv"]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner"]
+spawn_path = NodePath("Players")
+script = ExtResource("1_2uatv")
+
+[node name="Players" type="Node2D" parent="."]

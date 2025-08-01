@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FallenArgentumTest"
-run/main_scene="uid://car8wmjjdjowu"
+run/main_scene="uid://dmb5n8a0ap7g1"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 Globals="*res://autoloads/globals.gd"
 Lobby="*res://autoloads/lobby.gd"
 SceneTransition="*res://autoloads/scene_transition.tscn"
+PlayerSpawner="*res://autoloads/player_spawner.tscn"
+PlayerPawnSpawner="*res://autoloads/player_pawn_spawner.tscn"
 
 [file_customization]
 

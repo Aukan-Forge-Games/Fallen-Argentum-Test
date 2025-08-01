@@ -4,6 +4,7 @@ class_name GameBoard
 var astar = AStarGrid2D.new()
 
 func _ready():
+	PlayerPawnSpawner.game_board = self
 	# Load level here (TODO)
 	
 	# Configure astar

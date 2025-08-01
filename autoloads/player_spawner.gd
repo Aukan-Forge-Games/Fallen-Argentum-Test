@@ -23,6 +23,10 @@ func _spawn_player(data: Array):
 		player.set_username(info["name"])
 	return player
 
+func despawn_all_players():
+	for child in get_node(spawn_path).get_children():
+		child.queue_free()
+
 func despawn_player(id: int):
 	if get_node(spawn_path).has_node(str(id)):
 		get_node(spawn_path).get_node(str(id)).queue_free()

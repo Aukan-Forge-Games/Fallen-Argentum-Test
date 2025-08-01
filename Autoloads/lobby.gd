@@ -47,7 +47,7 @@ func create_game():
 	player_connected.emit(1, player_info)
 	
 	SceneTransition.set_message("Starting Game...")
-	SceneTransition.change_scene_to(load("res://World/lobby_world.tscn"))
+	SceneTransition.change_scene_to(GameWorldManager.Worlds.LOBBY)
 	
 	return OK
 
@@ -77,8 +77,7 @@ func _on_connected_ok():
 	players[peer_id] = player_info
 	player_connected.emit(peer_id, player_info)
 	
-	# After a successful connection, load into the game world.
-	SceneTransition.finish_change_scene(load("res://World/lobby_world.tscn"))
+	SceneTransition._fade_out()
 
 func _on_connected_fail():
 	multiplayer.multiplayer_peer = null
@@ -90,7 +89,7 @@ func _on_server_disconnected():
 	server_disconnected.emit()
 	
 	# Instantly change scene to the main menu.
-	SceneTransition.finish_change_scene(load("res://Scenes/UI/join_screen.tscn"))
+	SceneTransition.finish_change_scene(GameWorldManager.Worlds.JOIN)
 
 func get_player_ids() -> Array:
 	return players.keys()
