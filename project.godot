@@ -28,7 +28,9 @@ PlayerPawnSpawner="*res://autoloads/player_pawn_spawner.tscn"
 folder_colors={
 "res://assets/": "yellow",
 "res://autoloads/": "red",
-"res://scenes/": "green"
+"res://resources/": "orange",
+"res://scenes/": "green",
+"res://scripts/": "teal"
 }
 
 [input]

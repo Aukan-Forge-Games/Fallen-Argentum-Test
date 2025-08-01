@@ -54,11 +54,6 @@ func start_preview():
 func _preview(dt):
 	pass
 
-func _enter_preview():
-	pass
-
-func _exit_preview():
-	pass
 #endregion
 
 #region execute_state
@@ -69,6 +64,4 @@ func _enter_execute():
 	state = States.EXECUTE
 	pass
 
-func _exit_execute():
-	pass
 #endregion

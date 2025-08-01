@@ -30,15 +30,13 @@ signal minor_actions_changed(to: int)
 func _ready():
 	#TODO: load actions from a player character / profile
 	
-	#TODO: player setup
-
-	
+	#TODO: player character setup
 	if not multiplayer.is_server():
 		return
 
 
 
-func update_turn_order(): ## TODO: call this when a new player joins
+func update_turn_order():
 	turn_order.clear()
 	for id in Lobby.get_player_ids():
 		turn_order.append(id)
@@ -79,6 +77,7 @@ func select_action(action: Action):
 
 func _on_action_used(action: Action):
 	# Remove action count of correct type
+	print("Action used: %s" % action)
 	match action.action_type:
 		Action.ActionTypes.MAJOR:
 			set_major_actions_remaining(major_actions_remaining - 1)

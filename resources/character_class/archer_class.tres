@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=4 format=3 uid="uid://dff4qy83ba7ji"]
+
+[ext_resource type="Script" uid="uid://87jwdq6qi8ck" path="res://scripts/character_data/action_data.gd" id="1_672s3"]
+[ext_resource type="Script" uid="uid://cjddkc5mc5hpt" path="res://scripts/character_data/character_class.gd" id="2_kg5xr"]
+[ext_resource type="Resource" uid="uid://chi6hxn1cn2db" path="res://resources/action_data/move_action.tres" id="2_wwhns"]
+
+[resource]
+script = ExtResource("2_kg5xr")
+class_title = "Archer"
+base_actions = Array[ExtResource("1_672s3")]([ExtResource("2_wwhns")])
+metadata/_custom_type_script = "uid://cjddkc5mc5hpt"

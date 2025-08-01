@@ -20,5 +20,5 @@ func set_path_preview(path: Array[Vector2i]):
 	line_2d.points = points
 	line_2d.show()
 	
-	end_point_sprite.position = points[len(points) - 1] * Vector2(Globals.tile_size)
+	end_point_sprite.position = points[len(points) - 1] + Globals.tile_size / 2.0
 	end_point_sprite.show()

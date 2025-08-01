@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ActionData" load_steps=3 format=3 uid="uid://chi6hxn1cn2db"]
+
+[ext_resource type="Script" uid="uid://cyyplxevewoey" path="res://scripts/actions/move_action.gd" id="1_ejpgb"]
+[ext_resource type="Script" uid="uid://87jwdq6qi8ck" path="res://scripts/character_data/action_data.gd" id="1_gseue"]
+
+[resource]
+script = ExtResource("1_gseue")
+action_script = ExtResource("1_ejpgb")
+metadata/_custom_type_script = "uid://87jwdq6qi8ck"

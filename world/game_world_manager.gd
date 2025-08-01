@@ -12,8 +12,6 @@ enum Worlds {
 }
 func _ready():
 	SceneTransition.world_manager = self
-	#set_multiplayer_authority(1, false)
-	#spawner.set_multiplayer_authority(1, false)
 	change_scene(Worlds.JOIN)
 	
 
