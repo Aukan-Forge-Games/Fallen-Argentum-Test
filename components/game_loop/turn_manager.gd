@@ -77,7 +77,6 @@ func select_action(action: Action):
 
 func _on_action_used(action: Action):
 	# Remove action count of correct type
-	print("Action used: %s" % action)
 	match action.action_type:
 		Action.ActionTypes.MAJOR:
 			set_major_actions_remaining(major_actions_remaining - 1)
