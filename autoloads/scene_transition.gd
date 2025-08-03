@@ -1,0 +1,57 @@
+extends CanvasLayer
+
+@onready var black_rectangle: ColorRect = $BlackRectangle
+@onready var message_label: RichTextLabel = $BlackRectangle/MessageLabel
+
+signal fade_in_finished()
+signal fade_out_finished()
+
+var fade_tween : Tween
+
+var world_manager : GameWorldManager
+
+func _ready():
+	black_rectangle.modulate = Color(1,1,1,0)
+	message_label.text = ""
+	black_rectangle.hide()
+
+## Fade in, change scene, and fade back out
+func change_scene_to(scn_id : int):
+	_fade_in()
+	await fade_in_finished
+	finish_change_scene(scn_id)
+
+## Fade to black and await "finish_change_scene" to fade back in
+func fade_to_black_with_message(msg: String):
+	set_message(msg)
+	_fade_in()
+
+## Change scene and fade out
+func finish_change_scene(scn_id : int):
+	world_manager.change_scene(scn_id)
+	_fade_out()
+
+## Fade out without changing scene
+func cancel_change_scene():
+	_fade_out()
+
+func set_message(msg: String):
+	message_label.text = "[center]" + msg
+
+func _fade_in():
+	if fade_tween:
+		fade_tween.kill()
+	fade_tween = create_tween()
+	# Show black color rect to block mouse
+	black_rectangle.show()
+	fade_tween.tween_property(black_rectangle, "modulate", Color(1,1,1,1), 0.5).from(Color(1,1,1,0))
+	fade_tween.finished.connect(fade_in_finished.emit, CONNECT_ONE_SHOT)
+
+func _fade_out():
+	if fade_tween:
+		fade_tween.kill()
+	fade_tween = create_tween()
+	fade_tween.tween_property(black_rectangle, "modulate", Color(1,1,1,0), 1.0).from(Color(1,1,1,1))
+	fade_tween.finished.connect(fade_out_finished.emit, CONNECT_ONE_SHOT)
+	# When fade out finishes, hide black rectangle to stop blocking mouse inputs.
+	fade_tween.finished.connect(black_rectangle.hide, CONNECT_ONE_SHOT)
